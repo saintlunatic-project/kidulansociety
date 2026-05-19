@@ -1,18 +1,24 @@
-addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
-})
-
-async function handleRequest(request) {
-  // Ganti dengan URL Web App Google Apps Script Anda
-  const gasUrl = 'https://script.google.com/macros/s/AKfycbxAKSXYTSiL87N6VKgOgIzksGjgT-6A2LsNhqtEdjaT_Xhqw9wPmXDN6CNso1oG6SlU1Q/exec'
-  
-  const response = await fetch(gasUrl, request)
-  let newHeaders = new Headers(response.headers)
-  newHeaders.delete('X-Frame-Options') // Menghapus blokir iframe jika diperlukan
-  
-  return new Response(response.body, {
-    status: response.status,
-    statusText: response.statusText,
-    headers: newHeaders
-  })
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Saya</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Mencegah munculnya scrollbar ganda */
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <iframe src="https://script.google.com/macros/s/AKfycbxAKSXYTSiL87N6VKgOgIzksGjgT-6A2LsNhqtEdjaT_Xhqw9wPmXDN6CNso1oG6SlU1Q/exec"></iframe>
+</body>
+</html>
